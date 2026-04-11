@@ -27,7 +27,12 @@ class Player(GameSprite):
            self.rect.y -= self.speed
        if keys[K_DOWN] and self.rect.y < win_width - 5:
            self.rect.y += self.speed
+font.init()
+font1 = font.SysFont('Arial', 70)
 
+lose_l = font1.render('SUB-ZERO WINS', True, (0, 255, 0))
+lose_r = font1.render('SCORPION WINS', True, (0, 255, 0))
+           
            
 win_width = 700
 win_height = 500
@@ -35,6 +40,21 @@ win = display.set_mode((win_width, win_height))
 
 back_color = (128, 255, 0)
 win.fill(back_color)
+
+ball = Player('tenis_ball.png', width/2, height/2, 50, 50, 4)
+racket_l = Player('tenis_ball.png', 50, 370, 50, 150, 4)
+racket_r = Player('tenis_ball.png', width-50, height/2, 50, 159, 4)
+
+if ball.rect.x < 0:
+   win.blit(lose_1, (200, 200))
+   game - False
+
+if ball.rect.x < 0:
+   win.blit(, (200, 200))
+   game - False
+
+speed_x = 3
+speed_y = 3
 
 clock = time.clock()
 FPS = 60
@@ -44,6 +64,6 @@ while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
-            
+           
     display.update()
     clock.tick(FPS)
